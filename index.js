@@ -1,9 +1,9 @@
 const jimp = require('jimp');
 const readLine = require('readline');
 let filepath;
-const config = require('config.json');
+const config = require('./config.json');
 const chalk = require('chalk')
-let file = `${savepath}${new Date()}.jpeg`
+let file = `${config.savepath}${new Date()}.jpeg`
 var rl = readLine.createInterface(process.stdin, process.stdout);
 
 rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
@@ -46,19 +46,18 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
             image.color([
                 { apply: 'saturate', params: [20] },
                 { apply: 'xor', params: [40] }
-            ]);
-            image.print(
+            ]).print(
                 font,
                 wea,
                 ver,
                 "HOW",
                 50
             )
-            image.posterize(100)
+            .posterize(100)
 
-            image.quality(10)
+            .quality(10)
 
-            image.write(file);
+            .write(file);
             let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
             console.log(chalk.green('Finished writing image'));
             console.log(`Image saved as: ${file}`)

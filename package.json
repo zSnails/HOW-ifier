@@ -1,0 +1,17 @@
+{
+  "name": "nodejshowgenerator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron app.js"
+  },
+  "author": "zSnails#5755",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "jimp": "^0.6.4",
+    "sleep": "^6.1.0"
+  }
+}

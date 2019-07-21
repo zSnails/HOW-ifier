@@ -23,13 +23,16 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
             w = image.bitmap.width - 50;
             h = image.bitmap.height - 50;
 
+        } else if (image.bitmap.width & image.bitmap.height < 60) {
+            w = image.bitmap.width - 10;
+            h = image.bitmap.height - 10;
         } else {
             w = image.bitmap.width - 400;
             h = image.bitmap.height - 400;
         }
 
-        image.resize(w, h)
-        let wea = image.bitmap.width / 2.7
+        image.resize(w, h)//.catch(err => console.error(chalk.red("Error: The image is too small")))
+        let wea = image.bitmap.width / 2.8
 
         let fSize;
         let ver;

@@ -1,20 +1,15 @@
-const jimp = require('jimp');
-const readLine = require('readline');
-let filepath;
-const config = require('./config.json');
-const chalk = require('chalk')
-let file = `${config.savepath}${new Date()}.jpeg`
-var rl = readLine.createInterface(process.stdin, process.stdout);
+let jimp = require('jimp');
+let chalk = require('chalk')
+let file = `${__dirname}/images/img.jpeg`
 
-rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
-    filepath = answer;
-    await rl.close()
-    jimp.read(filepath).then(image => {
-        console.log(chalk.yellow('Writing image (this may take a while)'))
+module.exports = function (imageurl) {
+    if (imageurl === undefined) {
+        throw (
+            `the image field can't be empty`)
+    }
+    jimp.read(imageurl).then(image => {
         let w;
         let h;
-
-
         if (image.bitmap.width && image.bitmap.height < 500) {
             w = image.bitmap.width - 100;
             h = image.bitmap.height - 100;
@@ -37,15 +32,15 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
         let fSize;
         let ver;
         if (image.bitmap.width < 270) {
-            fSize = "impact/impact_32.fnt"
+            fSize = `${__dirname}/impact/impact_32.fnt`
             ver = -20
         } else {
-            fSize = "impact/impact.fnt"
+            fSize = `${__dirname}/impact/impact.fnt`
             ver = -70
         }
 
-        jimp.loadFont(fSize).then(font => {
-
+        jimp.loadFont(fSize).then(async font => {
+            let r;
             image.color([
                 { apply: 'saturate', params: [20] },
                 { apply: 'xor', params: [40] }
@@ -55,19 +50,14 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
                 ver,
                 "HOW",
                 50
-            )
-            .posterize(100)
+        )
+                .posterize(100)
 
-            .quality(10)
+                .quality(10)
 
-            .write(file);
-            let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
-            console.log(chalk.green('Finished writing image'));
-            console.log(`Image saved as: ${file}`)
-            console.log(`To see the image go to ${__dirname + '/' + file}`)
-            console.log(eu)
-
+                .write(file)
+                
         })
     }).catch(err => console.error(chalk.red(`Error: ${err.message}`)))
-
-});
+    return file
+}

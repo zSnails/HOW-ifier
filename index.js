@@ -1,5 +1,4 @@
 let jimp = require('jimp');
-let chalk = require('chalk')
 let file = `${__dirname}/images/img.jpeg`
 
 module.exports = function (imageurl) {
@@ -26,7 +25,7 @@ module.exports = function (imageurl) {
             h = image.bitmap.height - 400;
         }
 
-        image.resize(w, h)//.catch(err => console.error(chalk.red("Error: The image is too small")))
+        image.resize(w, h)
         let wea = image.bitmap.width / 2.8
 
         let fSize;
@@ -58,6 +57,6 @@ module.exports = function (imageurl) {
                 .write(file)
                 
         })
-    }).catch(err => console.error(chalk.red(`Error: ${err.message}`)))
+    }).catch(err => console.error(`Error: ${err.message}`))
     return file
 }

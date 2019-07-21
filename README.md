@@ -4,25 +4,25 @@ What the actual fuck is this? Idek, my friends and I were messing around with im
 
 # Installation
 
-* Clone the repo.
+* Use `npm` to install the package
 
 ```bash
-$ git clone https://github.com/zSnails/HOW-ifier.git
+$ npm i howifier
 ```
 
-If you're on linux remember to set the `start` file as an executable file, on windows just run the `start.bat` file.
+# What this does
 
-When you run it it'll ask for either an url or the path to the file (you can use local files).
-
-# What this can and can't do
-
-* This can't edit photos, just fry them and add HOW at the top
-* This can't HOWify multiple photos at the same time.
-* This can give u some fun lol
+* This turns a given image into a HOW meme
 
 # Example
 
-![example](https://i.imgur.com/6gRjcuI.png)
+### Before  HOWifier
+![example](https://cdn.discordapp.com/attachments/480984409353355265/587294259955236874/gg.PNG)
+
+### After HOWifier
+![example](https://cdn.discordapp.com/attachments/568874702018183178/602338078115364867/img.jpeg)
+
+#### Yeah I used discord, but this can be used in anythig u want, Ik most ppl will use this for discord so I used discord as an example
 
 ###### © 2019 zSnails
 

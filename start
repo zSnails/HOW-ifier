@@ -1,5 +1,0 @@
-#!/bin/bash
-# Do not change anything on this file lol
-echo Reminder, you need to have node.js installed in order for this to work lol
-
-node index.js

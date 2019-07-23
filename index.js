@@ -40,10 +40,10 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ('exit' t
         let fSize;
         let ver;
         if (image.bitmap.width < 270) {
-            fSize = "impact/impact_32.fnt"
+            fSize = "./impact/impact_32.fnt"
             ver = -20
         } else {
-            fSize = "impact/impact.fnt"
+            fSize = "./impact/impact.fnt"
             ver = -70
         }
 

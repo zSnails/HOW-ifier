@@ -4,15 +4,11 @@ What the actual fuck is this? Idek, my friends and I were messing around with im
 
 # Installation
 
-* Clone the repo.
+* Install with npm.
 
 ```bash
-$ git clone https://github.com/zSnails/HOW-ifier.git
+$ npm i -g howifiercore
 ```
-
-If you're on linux remember to set the `start` file as an executable file, on windows just run the `start.bat` file.
-
-When you run it it'll ask for either an url or the path to the file (you can use local files).
 
 # What this can and can't do
 
@@ -22,7 +18,7 @@ When you run it it'll ask for either an url or the path to the file (you can use
 
 # Example
 
-![example](https://i.imgur.com/6gRjcuI.png)
+![example]()
 
 ###### © 2019 zSnails
 

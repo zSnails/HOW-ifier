@@ -1,10 +1,12 @@
 {
   "name": "howifiercore",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "",
   "main": "index.js",
   "bin": {
-    "how": "index.js"
+    "how": "index.js",
+    "how --config": "setup.js",
+    "how -c": "setup.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -2,18 +2,14 @@
 const jimp = require('jimp');
 const readLine = require('readline');
 let filepath;
-const chalk = require('chalk')
-const fs = require('fs');
-let current_datetime = new Date()
-
-
-
-
+const chalk = require('chalk');
 const rl = readLine.createInterface(process.stdin, process.stdout);
-const dl = require('downloads-folder');
-let r = dl();
-
-const file = `${r}howified/${new Date()}.jpeg`
+let conf = require('./config.json');
+if (conf.saveto === 'nicepath') throw (`
+There's no save path
+Run how --config or how -c to setup a save path`
+)
+const file = `${conf.saveto}/howified/${new Date()}.jpeg`
 rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
     filepath = answer;
     await rl.close()
@@ -67,15 +63,15 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
                 "HOW",
                 50
             )
-            .posterize(100)
+                .posterize(100)
 
-            .quality(10)
+                .quality(10)
 
-            .write(file);
+                .write(file);
             let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
             console.log(chalk.green('Finished writing image'));
             console.log(`Image saved as: ${file}`)
-            console.log(`To see the image go to ${r}howified/${time}.jpeg`)
+            console.log(`To see the image go to ${conf.saveto}/howified/${time}.jpeg`)
             console.log(eu)
             console.timeEnd("⏱️")
 

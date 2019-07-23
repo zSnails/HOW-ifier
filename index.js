@@ -71,6 +71,6 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ('exit' t
             console.log(eu)
 
         })
-    }).catch(err => console.error(chalk.red(`Error: ${err.message}`)))
+    })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))
 
 });

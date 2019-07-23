@@ -66,7 +66,7 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
             let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
             console.log(chalk.green('Finished writing image'));
             console.log(`Image saved as: ${file}`)
-            console.log(`To see the image go to ${r + '/' + file}`)
+            console.log(`To see the image go to ${r + new Date()}`)
             console.log(eu)
 
         })

@@ -7,7 +7,7 @@ const rl = readLine.createInterface(process.stdin, process.stdout);
 let conf = require('./config.json');
 if (conf.saveto === 'nicepath') throw (`
 There's no save path
-Run how --config or how -c to setup a save path`
+Run how-setup to setup a save path`
 )
 const file = `${conf.saveto}/howified/${new Date()}.jpeg`
 rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {

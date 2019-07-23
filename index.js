@@ -13,9 +13,7 @@ const rl = readLine.createInterface(process.stdin, process.stdout);
 const dl = require('downloads-folder');
 let r = dl();
 
-let number = fs.readdirSync(`${r}howified/`)
-let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear() + "(" + number.length + ")"
-const file = `${r}howified/${formatted_date}.jpeg`
+const file = `${r}howified/${new Date()}.jpeg`
 rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
     filepath = answer;
     await rl.close()
@@ -55,6 +53,8 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
             ver = -70
         }
 
+
+        let time = new Date();
         jimp.loadFont(fSize).then(font => {
 
             image.color([
@@ -75,7 +75,7 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
             let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
             console.log(chalk.green('Finished writing image'));
             console.log(`Image saved as: ${file}`)
-            console.log(`To see the image go to ${r}howified/${formatted_date}.jpeg`)
+            console.log(`To see the image go to ${r}howified/${time}.jpeg`)
             console.log(eu)
             console.timeEnd("⏱️")
 

@@ -18,7 +18,27 @@ $ npm i -g howifiercore
 
 # Example
 
-![example](https://i.imgur.com/Iyvm8Ea.png)
+
+First open your terminal and type in `how`
+```bash
+$ how
+```
+Then, when the prompt appears you can enter a link to an image
+```bash
+$ how
+Provide an url/path to the image that you want to HOW-ify <link here>
+```
+After you enter the link you can now press enter and it'll generate the image for you
+```bash
+$ how
+Provide an url/path to the image that you want to HOW-ify 
+Writing image (this may take a wile)
+-- 5 secs l8r --
+Image saved as: <img name>
+To see the image go to <img folder>
+Width: ###
+height: ###
+⏱️: 5000.00ms
+```
 
 ###### © 2019 zSnails
-

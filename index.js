@@ -7,8 +7,10 @@ const chalk = require('chalk')
 let file = `${config.savepath}${new Date()}.jpeg`
 var rl = readLine.createInterface(process.stdin, process.stdout);
 
-rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
+rl.question("Provide an url/path to the image that you want to HOW-ify ('exit' to leave) ", async function (answer) {
     filepath = answer;
+    if (answer === 'exit') rl.close();
+
     await rl.close()
     jimp.read(filepath).then(image => {
         console.log(chalk.yellow('Writing image (this may take a while)'))

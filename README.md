@@ -18,7 +18,7 @@ $ npm i -g howifiercore
 
 # Example
 
-![example]()
+![example](https://i.imgur.com/Iyvm8Ea.png)
 
 ###### © 2019 zSnails
 

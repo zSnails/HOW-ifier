@@ -4,13 +4,19 @@ const readLine = require('readline');
 let filepath;
 const chalk = require('chalk')
 
+let current_datetime = new Date()
+let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
+
+
+
 const rl = readLine.createInterface(process.stdin, process.stdout);
 const dl = require('downloads-folder');
 let r = dl();
-const file = `${r}${new Date()}.jpeg`
+const file = `${r}howified/${formatted_date}.jpeg`
 rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
     filepath = answer;
     await rl.close()
+    console.time("⏱️");
     jimp.read(filepath).then(image => {
         console.log(chalk.yellow('Writing image (this may take a while)'))
         let w;
@@ -66,8 +72,9 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ", async 
             let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
             console.log(chalk.green('Finished writing image'));
             console.log(`Image saved as: ${file}`)
-            console.log(`To see the image go to ${r + new Date()}`)
+            console.log(`To see the image go to ${r}howified/${formatted_date}.jpeg`)
             console.log(eu)
+            console.timeEnd("⏱️")
 
         })
     })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))

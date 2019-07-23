@@ -2,15 +2,14 @@
 const jimp = require('jimp');
 const readLine = require('readline');
 let filepath;
-const config = require('./config.json');
 const chalk = require('chalk')
-let file = `${config.savepath}${new Date()}.jpeg`
-var rl = readLine.createInterface(process.stdin, process.stdout);
 
-rl.question("Provide an url/path to the image that you want to HOW-ify ('exit' to leave) ", async function (answer) {
+const rl = readLine.createInterface(process.stdin, process.stdout);
+const dl = require('downloads-folder');
+let r = dl();
+const file = `${r}${new Date()}.jpeg`
+rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
     filepath = answer;
-    if (answer === 'exit') rl.close();
-
     await rl.close()
     jimp.read(filepath).then(image => {
         console.log(chalk.yellow('Writing image (this may take a while)'))
@@ -67,10 +66,9 @@ rl.question("Provide an url/path to the image that you want to HOW-ify ('exit' t
             let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
             console.log(chalk.green('Finished writing image'));
             console.log(`Image saved as: ${file}`)
-            console.log(`To see the image go to ${__dirname + '/' + file}`)
+            console.log(`To see the image go to ${dl + '/' + file}`)
             console.log(eu)
 
         })
     })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))
-
 });

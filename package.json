@@ -1,11 +1,10 @@
 {
-  "name": "nodejshowgenerator",
-  "version": "1.0.0",
+  "name": "howifier-core",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "zSnails#5755",
   "license": "ISC",

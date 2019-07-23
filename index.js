@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const jimp = require('jimp');
 const readLine = require('readline');
 let filepath;

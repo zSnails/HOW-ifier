@@ -3,15 +3,18 @@ const jimp = require('jimp');
 const readLine = require('readline');
 let filepath;
 const chalk = require('chalk')
-
+const fs = require('fs');
 let current_datetime = new Date()
-let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
+
 
 
 
 const rl = readLine.createInterface(process.stdin, process.stdout);
 const dl = require('downloads-folder');
 let r = dl();
+
+let number = fs.readdirSync(`${r}howified/`)
+let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear() + "(" + number.length + ")"
 const file = `${r}howified/${formatted_date}.jpeg`
 rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
     filepath = answer;

@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "how": "index.js",
-    "how-setup": "setup.js"
+    "how": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +15,7 @@
     "chalk": "^2.4.2",
     "downloads-folder": "^1.0.1",
     "jimp": "^0.6.4",
-    "sleep": "^6.1.0"
+    "sleep": "^6.1.0",
+    "yargs": "^13.3.0"
   }
 }

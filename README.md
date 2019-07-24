@@ -18,8 +18,15 @@ $ npm i -g howifiercore
 
 # Example
 
+First, type `how --config` to set up a saving path.
+```bash
+$ how --config
+Provide the desired save path: <path here>
+```
 
-First open your terminal and type in `how`
+> If you don't know what this is you better google it, bc I'm not telling u
+
+Then you can use the `how` command.
 ```bash
 $ how
 ```

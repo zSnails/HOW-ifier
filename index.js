@@ -6,12 +6,12 @@ const chalk = require('chalk');
 const rl = readLine.createInterface(process.stdin, process.stdout);
 const fs = require('fs');
 const argv = require('yargs').argv
-let data = fs.readFileSync('./config.txt', 'utf8');
+let data = fs.readFileSync(`${__dirname}config.txt`, 'utf8');
 let splitter = '\n';
 let wea = data.slice(0).split(splitter);
 
 if (argv.version) {
-    const ver = require('./package.json');
+    const ver = require(`${__dirname}package.json`);
     console.log(ver)
 }
 if (argv.config) {
@@ -21,7 +21,7 @@ if (argv.config) {
         let temp = `${d}`
         fs.readdir(d, function (err, files) {
             if (err) return console.log("That's not a valid path")
-            else fs.writeFileSync(`./config.txt`, temp); console.log(`New save path set to ${d}`)
+            else fs.writeFileSync(`${__dirname}config.txt`, temp); console.log(`New save path set to ${d}`)
 
         });
 

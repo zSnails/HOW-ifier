@@ -13,7 +13,7 @@ if (argv.version) {
     console.log(ver)
 }
 if (argv.config) {
-
+    console.log("Note: If you're on windows use / instead of \\")
     rl.question("Provide the desired save path: ", async function (answer) {
         d = answer
         let temp = `{"saveto": "${d}"}`
@@ -30,8 +30,7 @@ if (argv.config) {
         console.log(`There's no save path\nRun 'how --config' to setup a save path`)
         process.exit()
     }
-    let date = new Date()
-    const file = `${conf.saveto}/howified/how-${date}.jpeg`
+    const file = `${conf.saveto}/howified/how-${new Date()}.jpeg`
     rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
         filepath = answer;
         await rl.close()

@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const rl = readLine.createInterface(process.stdin, process.stdout);
 let conf = require('./config.json');
 const fs = require('fs');
+const clip = require('clipboardy');
 const argv = require('yargs').argv
 if (argv.config) {
 
@@ -84,13 +85,13 @@ if (argv.config) {
                     .quality(10)
 
                     .write(file);
+
                 let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
                 console.log(chalk.green('Finished writing image'));
                 console.log(`Image saved as: ${file}`)
                 console.log(`To see the image go to ${conf.saveto}/howified/${time}.jpeg`)
                 console.log(eu)
                 console.timeEnd("⏱️")
-
             })
         })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))
     });

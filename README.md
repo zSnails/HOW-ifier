@@ -16,6 +16,14 @@ $ npm i howifier
 
 # Example
 
+```js
+const how = require('howifier');
+const img = how('link');
+// it's up to you how to handle the response lol
+```
+
+
+
 ### Before  HOWifier
 ![example](https://cdn.discordapp.com/attachments/480984409353355265/587294259955236874/gg.PNG)
 

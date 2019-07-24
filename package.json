@@ -1,6 +1,6 @@
 {
   "name": "howifier",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A HOW meme generator (bc why not?)",
   "main": "index.js",
   "scripts": {

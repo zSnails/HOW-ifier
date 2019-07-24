@@ -6,7 +6,7 @@ const chalk = require('chalk');
 const rl = readLine.createInterface(process.stdin, process.stdout);
 const fs = require('fs');
 const argv = require('yargs').argv
-let data = fs.readFileSync(`${__dirname}/config.txt`, 'utf8');
+let conf = require(`${__dirname}/config.json`);
 let splitter = '\n';
 let wea = data.slice(0).split(splitter);
 
@@ -18,10 +18,10 @@ if (argv.config) {
 
     rl.question("Provide the desired save path: ", async function (answer) {
         d = answer
-        let temp = `${d}`
+        let temp = `{"saveto": "${d}"}`
         fs.readdir(d, function (err, files) {
             if (err) return console.log("That's not a valid path")
-            else fs.writeFileSync(`${__dirname}/config.txt`, temp); console.log(`New save path set to ${d}`)
+            else fs.writeFileSync(conf, temp); console.log(`New save path set to ${d}`)
 
         });
 
@@ -29,7 +29,7 @@ if (argv.config) {
     })
 } else {
     if (wea[0] === 'nicepath') {
-        console.log(`There's no save path\nRun how --config to setup a save path`)
+        console.log(`There's no save path\nRun 'how --config' to setup a save path`)
         process.exit()
     }
     const file = `${wea[0]}/howified/${new Date()}.jpeg`
@@ -71,9 +71,6 @@ if (argv.config) {
                 fSize = `${__dirname}/impact/impact.fnt`
                 ver = -70
             }
-
-
-            let time = new Date();
             jimp.loadFont(fSize).then(font => {
 
                 image.color([
@@ -94,8 +91,6 @@ if (argv.config) {
 
                 let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
                 console.log(chalk.green('Finished writing image'));
-                console.log(`Image saved as: ${file}`)
-                console.log(`To see the image go to ${wea[0]}\/howified\/${time}.jpeg`)
                 console.log(eu)
                 console.timeEnd("⏱️")
             })

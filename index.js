@@ -7,6 +7,7 @@ module.exports = function (imageurl) {
             `the image field can't be empty`)
     }
     jimp.read(imageurl).then(image => {
+        if (image.bitmap.width && image.bitmap.height < 60) return console.log("That image is too small")
         let w;
         let h;
         if (image.bitmap.width && image.bitmap.height < 500) {

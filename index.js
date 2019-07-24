@@ -7,7 +7,6 @@ const rl = readLine.createInterface(process.stdin, process.stdout);
 const fs = require('fs');
 const argv = require('yargs').argv
 let conf = require(`${__dirname}/config.json`);
-const { exec } = require('child_process');
 
 if (argv.version) {
     const ver = require(`${__dirname}/package.json`);
@@ -20,7 +19,7 @@ if (argv.config) {
         let temp = `{"saveto": "${d}"}`
         fs.readdir(d, function (err, files) {
             if (err) return console.log("That's not a valid path")
-            else fs.writeFileSync(conf, temp); console.log(`New save path set to ${d}`)
+            else fs.writeFileSync(`${__dirname}/config.json`, temp); console.log(`New save path set to ${d}`)
 
         });
 

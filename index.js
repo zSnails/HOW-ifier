@@ -37,6 +37,9 @@ if (argv.config) {
         await rl.close()
         console.time("⏱️");
         jimp.read(filepath).then(image => {
+            if (image.bitmap.width & image.bitmap.height < 60) {
+                return console.log(chalk.red("That image is too small"))
+            }
             console.log(chalk.yellow('Writing image (this may take a while)'))
             let w;
             let h;
@@ -50,8 +53,6 @@ if (argv.config) {
                 w = image.bitmap.width - 50;
                 h = image.bitmap.height - 50;
 
-            } else if (image.bitmap.width & image.bitmap.height < 60) {
-                return console.log(chalk.red("That image is too small"))
             } else {
                 w = image.bitmap.width - 400;
                 h = image.bitmap.height - 400;

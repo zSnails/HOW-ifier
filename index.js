@@ -11,7 +11,6 @@ const { exec } = require('child_process');
 if (argv.update) {
     exec('npm i -g howifiercore');
 }
-console.log(process)
 if (argv.version) {
     const ver = require(`${__dirname}/package.json`);
     console.log(ver)

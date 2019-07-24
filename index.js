@@ -9,7 +9,11 @@ const argv = require('yargs').argv
 let conf = require(`${__dirname}/config.json`);
 let splitter = '\n';
 let wea = data.slice(0).split(splitter);
-
+const { exec } = require('child_process');
+if (argv.update) {
+    exec('npm i -g howifiercore');
+}
+console.log(process)
 if (argv.version) {
     const ver = require(`${__dirname}/package.json`);
     console.log(ver)
@@ -28,11 +32,11 @@ if (argv.config) {
         await rl.close()
     })
 } else {
-    if (wea[0] === 'nicepath') {
+    if (conf.saveto === 'nicepath') {
         console.log(`There's no save path\nRun 'how --config' to setup a save path`)
         process.exit()
     }
-    const file = `${wea[0]}/howified/${new Date()}.jpeg`
+    const file = `${conf.saveto}/howified/${new Date()}.jpeg`
     rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
         filepath = answer;
         await rl.close()

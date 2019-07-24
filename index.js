@@ -30,7 +30,9 @@ if (argv.config) {
         console.log(`There's no save path\nRun 'how --config' to setup a save path`)
         process.exit()
     }
-    var file = `${conf.saveto}/howified/${new Date()}.jpeg`
+    let k = fs.readdirSync(conf.saveto+"/howified");
+    let pe = k.size
+    var file = `${conf.saveto}/howified/how-${pe}.jpeg`
     rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
         filepath = answer;
         await rl.close()

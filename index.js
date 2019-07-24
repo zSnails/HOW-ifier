@@ -7,8 +7,6 @@ const rl = readLine.createInterface(process.stdin, process.stdout);
 const fs = require('fs');
 const argv = require('yargs').argv
 let conf = require(`${__dirname}/config.json`);
-let splitter = '\n';
-let wea = data.slice(0).split(splitter);
 const { exec } = require('child_process');
 if (argv.update) {
     exec('npm i -g howifiercore');

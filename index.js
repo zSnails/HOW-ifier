@@ -8,9 +8,7 @@ const fs = require('fs');
 const argv = require('yargs').argv
 let conf = require(`${__dirname}/config.json`);
 const { exec } = require('child_process');
-if (argv.update) {
-    exec('npm i -g howifiercore');
-}
+
 if (argv.version) {
     const ver = require(`${__dirname}/package.json`);
     console.log(ver)

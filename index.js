@@ -4,9 +4,12 @@ const readLine = require('readline');
 let filepath;
 const chalk = require('chalk');
 const rl = readLine.createInterface(process.stdin, process.stdout);
-let conf = require('./config.json');
 const fs = require('fs');
 const argv = require('yargs').argv
+let data = fs.readFileSync('./config.txt', 'utf8');
+let splitter = '\n';
+let wea = data.slice(0).split(splitter);
+
 if (argv.version) {
     const ver = require('./package.json');
     console.log(ver)
@@ -15,21 +18,21 @@ if (argv.config) {
 
     rl.question("Provide the desired save path: ", async function (answer) {
         d = answer
-        let temp = `{"saveto": "${d}"}`
+        let temp = `${d}`
         fs.readdir(d, function (err, files) {
             if (err) return console.log("That's not a valid path")
-            else fs.writeFileSync(`${__dirname}config.json`, temp); console.log(`New save path set to ${d}`)
+            else fs.writeFileSync(`./config.txt`, temp); console.log(`New save path set to ${d}`)
 
         });
 
         await rl.close()
     })
 } else {
-    if (conf.saveto === 'nicepath') {
-        console.log(`There's no save path\nRun how to setup a save path`)
+    if (wea[0] === 'nicepath') {
+        console.log(`There's no save path\nRun how --config to setup a save path`)
         process.exit()
     }
-    const file = `${conf.saveto}/howified/${new Date()}.jpeg`
+    const file = `${wea[0]}/howified/${new Date()}.jpeg`
     rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
         filepath = answer;
         await rl.close()
@@ -92,7 +95,7 @@ if (argv.config) {
                 let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
                 console.log(chalk.green('Finished writing image'));
                 console.log(`Image saved as: ${file}`)
-                console.log(`To see the image go to ${conf.saveto}/howified/${time}.jpeg`)
+                console.log(`To see the image go to ${wea[0]}\/howified\/${time}.jpeg`)
                 console.log(eu)
                 console.timeEnd("⏱️")
             })

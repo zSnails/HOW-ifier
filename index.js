@@ -6,7 +6,6 @@ const chalk = require('chalk');
 const rl = readLine.createInterface(process.stdin, process.stdout);
 let conf = require('./config.json');
 const fs = require('fs');
-const clip = require('clipboardy');
 const argv = require('yargs').argv
 if (argv.config) {
 

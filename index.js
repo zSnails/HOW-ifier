@@ -7,6 +7,10 @@ const rl = readLine.createInterface(process.stdin, process.stdout);
 let conf = require('./config.json');
 const fs = require('fs');
 const argv = require('yargs').argv
+if (argv.version) {
+    const ver = require('./package.json');
+    console.log(ver)
+}
 if (argv.config) {
 
     rl.question("Provide the desired save path: ", async function (answer) {

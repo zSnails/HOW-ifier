@@ -1,4 +1,6 @@
-# HOW-ifier
+# HOW-ifier (core)
+
+This is intended to be used with the command line
 
 What the actual fuck is this? Idek, my friends and I were messing around with images and I decided to make this lmfao
 

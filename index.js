@@ -30,7 +30,7 @@ if (argv.config) {
         console.log(`There's no save path\nRun 'how --config' to setup a save path`)
         process.exit()
     }
-    const file = `${conf.saveto}/howified/how-${new Date()}.jpeg`
+    const file = `${conf.saveto}/howified/how-` + new Date() + `.jpeg`
     rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
         filepath = answer;
         await rl.close()

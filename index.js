@@ -14,7 +14,7 @@ if (argv.config) {
         let temp = `{"saveto": "${d}"}`
         fs.readdir(d, function (err, files) {
             if (err) return console.log("That's not a valid path")
-            else fs.writeFileSync('./config.json', temp);
+            else fs.writeFileSync(`${__dirname}config.json`, temp); console.log(`New save path set to ${d}`)
 
         });
 

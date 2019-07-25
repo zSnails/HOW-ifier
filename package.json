@@ -9,6 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+  "git": "git+https://github.com/zSnails/HOW-ifier.git"
+  }
   "author": "zSnails#5755",
   "license": "ISC",
   "dependencies": {

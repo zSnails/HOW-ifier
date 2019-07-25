@@ -11,7 +11,7 @@
   },
   "repository": {
   "git": "git+https://github.com/zSnails/HOW-ifier.git"
-  }
+  },
   "author": "zSnails#5755",
   "license": "ISC",
   "dependencies": {

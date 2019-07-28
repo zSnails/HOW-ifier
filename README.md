@@ -1,4 +1,9 @@
 # HOW-ifier (core)
+
+
+> I fixed **most** of the bugs this shit had, but I'm not sure
+
+
 This is intended to be used with the command line, if you want to use this on your Node.js program, check out [howifier](https://www.npmjs.com/package/howifier).
 
 What the actual fuck is this? Idek, my friends and I were messing around with images and I decided to make this lmfao

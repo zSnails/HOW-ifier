@@ -28,7 +28,7 @@ if (argv.config) {
 
         await rl.close()
         fs.mkdir(`${answer}/howified/`, (err) => {
-            if (err) return console.log(err);
+            if (err) return;
         })
     })
 } else {

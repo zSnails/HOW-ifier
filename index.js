@@ -16,13 +16,20 @@ if (argv.config) {
     rl.question("Provide the desired save path: ", async function (answer) {
         d = answer
         let temp = `{"saveto": "${d}"}`
-        fs.readdir(d, function (err, files) {
+        fs.readdir(d, async function (err, files) {
             if (err) return console.log("That's not a valid path")
-            else fs.writeFileSync(`${__dirname}/config.json`, temp); console.log(`New save path set to ${d}`)
+            else {
+             fs.writeFileSync(`${__dirname}/config.json`, temp);
+                console.log(`New save path set to ${d}`)
+            
+                }
 
         });
 
         await rl.close()
+        fs.mkdir(`${answer}/howified/`, (err) => {
+            if (err) return console.log(err);
+        })
     })
 } else {
     if (conf.saveto === 'nicepath') {
@@ -30,9 +37,7 @@ if (argv.config) {
         process.exit()
     }
 
-
     fs.readdir(`${conf.saveto}/howified/`, (err, files) => {
-        if (err) return console.error(err);
         let ar = files.filter(f => f.split(".").pop() === "jpeg");
         let pito = ar.length + 1
 
@@ -102,4 +107,5 @@ if (argv.config) {
         });
 
     })
+
 }

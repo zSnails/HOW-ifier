@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+const logger = require('./util/logger.js');
 const jimp = require('jimp');
 const readLine = require('readline');
 let filepath;
@@ -9,10 +10,10 @@ const argv = require('yargs').argv
 let conf = require(`${__dirname}/config.json`);
 if (argv.version) {
     const ver = require(`${__dirname}/package.json`);
-    console.log(ver)
+    logger.info(ver)
 }
 if (argv.config) {
-    console.log("Note: If you're on windows use / instead of \\")
+    logger.warn("If you're on windows use / instead of \\")
     rl.question("Provide the desired save path: ", async function (answer) {
         d = answer
         let temp = `{"saveto": "${d}"}`
@@ -20,7 +21,7 @@ if (argv.config) {
             if (err) return console.log("That's not a valid path")
             else {
              fs.writeFileSync(`${__dirname}/config.json`, temp);
-                console.log(`New save path set to ${d}`)
+                logger.info(`New save path set to ${d}`)
             
                 }
 
@@ -33,7 +34,7 @@ if (argv.config) {
     })
 } else {
     if (conf.saveto === 'nicepath') {
-        console.log(`There's no save path\nRun 'how --config' to setup a save path`)
+        logger.info(`There's no save path. Run 'how --config' to setup a save path`)
         process.exit()
     }
 
@@ -45,12 +46,12 @@ if (argv.config) {
         rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
             filepath = answer;
             await rl.close()
-            console.time("⏱️");
+            console.time(`[${new Date().toLocaleDateString()}]:[INFO]`);
             jimp.read(filepath).then(image => {
                 if (image.bitmap.width & image.bitmap.height < 60) {
-                    return console.log(chalk.red("That image is too small"))
+                    return logger.error(chalk.red("That image is too small"))
                 }
-                console.log(chalk.yellow('Writing image (this may take a while)'))
+                logger.info(chalk.yellow('Writing image (this may take a while)'))
                 let w;
                 let h;
 
@@ -93,15 +94,13 @@ if (argv.config) {
                         50
                     )
                         .posterize(100)
-
                         .quality(10)
-
                         .write(file);
-
-                    let eu = `Width: ${image.bitmap.width}\nHeight: ${image.bitmap.height}`
-                    console.log(chalk.green('Finished writing image'));
-                    console.log(eu)
-                    console.timeEnd("⏱️")
+                    logger.info(chalk.green('Finished writing image'));
+                    logger.info(`Width: ${image.bitmap.width}`)
+                    logger.info(`Height: ${image.bitmap.height}`)
+                    console.timeEnd(`[${new Date().toLocaleDateString()}]:[INFO]`)
+    
                 })
             })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))
         });

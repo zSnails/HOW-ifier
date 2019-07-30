@@ -15,13 +15,12 @@ if (argv.version) {
 if (argv.config) {
     logger.warn("If you're on windows use / instead of \\")
     rl.question("Provide the desired save path: ", async function (answer) {
-        d = answer
-        let temp = `{"saveto": "${d}"}`
-        fs.readdir(d, async function (err, files) {
-            if (err) return console.log("That's not a valid path")
+        let temp = `{"saveto": "${answer}"}`
+        fs.readdir(answer, async function (err, files) { 
+            if (err) return logger.error("That's not a valid path")
             else {
              fs.writeFileSync(`${__dirname}/config.json`, temp);
-                logger.info(`New save path set to ${d}`)
+                logger.info(`New save path set to ${answer}`)
             
                 }
 
@@ -48,7 +47,7 @@ if (argv.config) {
             await rl.close()
             console.time(`[${new Date().toLocaleDateString()}]:[INFO]`);
             jimp.read(filepath).then(image => {
-                if (image.bitmap.width & image.bitmap.height < 60) {
+                if (image.bitmap.width && image.bitmap.height < 60) {
                     return logger.error(chalk.red("That image is too small"))
                 }
                 logger.info(chalk.yellow('Writing image (this may take a while)'))
@@ -69,7 +68,7 @@ if (argv.config) {
                     h = image.bitmap.height - 400;
                 }
 
-                image.resize(w, h)//.catch(err => console.error(chalk.red("Error: The image is too small")))
+                image.resize(w, h)
                 let wea = image.bitmap.width / 2.8
 
                 let fSize;

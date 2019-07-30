@@ -59,7 +59,7 @@ if (argv.config) {
                     w = image.bitmap.width - 100;
                     h = image.bitmap.height - 100;
 
-                } else if (image.bitmap.width && image.bitmap.height < 200) {
+                } else if (image.bitmap.width && image.bitmap.height < 150) {
                     w = image.bitmap.width - 50;
                     h = image.bitmap.height - 50;
 
@@ -67,8 +67,12 @@ if (argv.config) {
                     w = image.bitmap.width - 400;
                     h = image.bitmap.height - 400;
                 }
-
-                image.resize(w, h)
+                try {
+                    image.resize(w, h)
+                }catch(err){
+                    return logger.error(err)
+                }
+                
                 let wea = image.bitmap.width / 2.8
 
                 let fSize;

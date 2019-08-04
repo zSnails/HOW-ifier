@@ -29,7 +29,7 @@ First, type `how --config` to set up a saving path.
 $ how --config
 Provide the desired save path: <path here>
 ```
-> if you're on window use / instead of \
+> if you're on windows use / instead of \
 
 > If you don't know what this is you better google it, bc I'm not telling u
 

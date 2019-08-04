@@ -26,10 +26,11 @@ if (argv.config) {
 
         });
 
-        await rl.close()
+        
         fs.mkdir(`${answer}/howified/`, (err) => {
             if (err) return;
         })
+        await rl.close()
     })
 } else {
     if (conf.saveto === 'nicepath') {

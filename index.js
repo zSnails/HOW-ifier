@@ -42,7 +42,7 @@ if (argv.config) {
         let ar = files.filter(f => f.split(".").pop() === "jpeg");
         let pito = ar.length + 1
 
-        var file = `${conf.saveto}/howified/how-(${pito}).jpeg`
+        
         rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
             filepath = answer;
             await rl.close()
@@ -55,7 +55,7 @@ if (argv.config) {
                 let w;
                 let h;
 
-
+                var file = `${conf.saveto}/howified/how-(${pito}).${image.getExtension()}`
                 if (image.bitmap.width && image.bitmap.height < 500) {
                     w = image.bitmap.width - 100;
                     h = image.bitmap.height - 100;

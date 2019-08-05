@@ -16,17 +16,17 @@ if (argv.config) {
     logger.warn("If you're on windows use / instead of \\")
     rl.question("Provide the desired save path: ", async function (answer) {
         let temp = `{"saveto": "${answer}"}`
-        fs.readdir(answer, async function (err, files) { 
+        fs.readdir(answer, async function (err, files) {
             if (err) return logger.error("That's not a valid path")
             else {
-             fs.writeFileSync(`${__dirname}/config.json`, temp);
+                fs.writeFileSync(`${__dirname}/config.json`, temp);
                 logger.info(`New save path set to ${answer}`)
-            
-                }
+
+            }
 
         });
 
-        
+
         fs.mkdir(`${answer}/howified/`, (err) => {
             if (err) return;
         })
@@ -42,7 +42,7 @@ if (argv.config) {
         let ar = files.filter(f => f.split(".").pop() === "jpeg");
         let pito = ar.length + 1
 
-        
+        var file = `${conf.saveto}/howified/how-(${pito}).jpeg`
         rl.question("Provide an url/path to the image that you want to HOW-ify ", async function (answer) {
             filepath = answer;
             await rl.close()
@@ -55,7 +55,7 @@ if (argv.config) {
                 let w;
                 let h;
 
-                var file = `${conf.saveto}/howified/how-(${pito}).${image.getExtension()}`
+
                 if (image.bitmap.width && image.bitmap.height < 500) {
                     w = image.bitmap.width - 100;
                     h = image.bitmap.height - 100;
@@ -70,10 +70,10 @@ if (argv.config) {
                 }
                 try {
                     image.resize(w, h)
-                }catch(err){
+                } catch (err) {
                     return logger.error(err)
                 }
-                
+
                 let wea = image.bitmap.width / 2.8
 
                 let fSize;
@@ -104,7 +104,7 @@ if (argv.config) {
                     logger.info(`Width: ${image.bitmap.width}`)
                     logger.info(`Height: ${image.bitmap.height}`)
                     console.timeEnd(`[${new Date().toLocaleDateString()}]:[INFO]`)
-    
+
                 })
             })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))
         });

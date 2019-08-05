@@ -1,7 +1,7 @@
 let jimp = require('jimp');
 let file = `${__dirname}/images/img.jpeg`
 
-module.exports = function (imageurl) {
+module.exports = async function (imageurl) {
     if (imageurl === undefined) {
         throw (
             `the image field can't be empty`)
@@ -17,10 +17,6 @@ module.exports = function (imageurl) {
         } else if (image.bitmap.width && image.bitmap.height < 200) {
             w = image.bitmap.width - 50;
             h = image.bitmap.height - 50;
-
-        } else if (image.bitmap.width & image.bitmap.height < 60) {
-            w = image.bitmap.width - 10;
-            h = image.bitmap.height - 10;
         } else {
             w = image.bitmap.width - 400;
             h = image.bitmap.height - 400;
@@ -59,5 +55,6 @@ module.exports = function (imageurl) {
                 
         })
     }).catch(err => console.error(`Error: ${err.message}`))
-    return file
+    let f = await file
+    return f
 }

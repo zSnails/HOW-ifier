@@ -34,7 +34,7 @@ module.exports = async function (imageurl) {
             fSize = `${__dirname}/impact/impact.fnt`
             ver = -70
         }
-
+//dou
         jimp.loadFont(fSize).then(async font => {
             let r;
             image.color([

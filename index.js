@@ -1,8 +1,8 @@
 let jimp = require('jimp');
-let fs = require('fs');
-let imgs = []
+
+let file = `${__dirname}/images/blissgay.jpeg`
 module.exports = async function (imageurl) {
-        let file = `${__dirname}/images/blissgay.jpeg`
+        
     
     if (imageurl === undefined) {
         throw (
@@ -53,9 +53,9 @@ module.exports = async function (imageurl) {
 
                 .quality(10)
 
-                await image.write(file)
-                imgs.push(file)
+                 image.write(file)
+
         })
     }).catch(err => console.error(`Error: ${err.message}`))
-    return imgs[0]
+    return file
 }

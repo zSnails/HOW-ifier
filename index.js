@@ -53,7 +53,7 @@ module.exports = async function (imageurl) {
 
                 .quality(10)
 
-                .write(file)
+                await image.write(file)
                 
         })
     }).catch(err => console.error(`Error: ${err.message}`))

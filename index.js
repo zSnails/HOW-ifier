@@ -1,7 +1,10 @@
 let jimp = require('jimp');
-let file = `${__dirname}/images/img.jpeg`
+let fs = require('fs');
 
 module.exports = async function (imageurl) {
+    fs.readdir(`${__dirname}/images`, async (err, files) => {
+        let file = `${__dirname}/images/how-(${files.length}).jpeg`
+    
     if (imageurl === undefined) {
         throw (
             `the image field can't be empty`)
@@ -57,4 +60,5 @@ module.exports = async function (imageurl) {
     }).catch(err => console.error(`Error: ${err.message}`))
     let f = await file
     return f
+})
 }

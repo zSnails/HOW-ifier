@@ -1,7 +1,7 @@
 let jimp = require('jimp');
 
 let file = `${__dirname}/images/blissgay.jpeg`
-module.exports = async function (imageurl) {
+module.exports = function (imageurl) {
         
     
     if (imageurl === undefined) {
@@ -37,7 +37,7 @@ module.exports = async function (imageurl) {
             ver = -70
         }
 //dou
-        jimp.loadFont(fSize).then(async font => {
+        jimp.loadFont(fSize).then(font => {
             let r;
             image.color([
                 { apply: 'saturate', params: [20] },

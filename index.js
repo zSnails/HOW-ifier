@@ -2,10 +2,7 @@ let jimp = require('jimp');
 let fs = require('fs');
 
 module.exports = async function (imageurl) {
-    fs.readdir(`${__dirname}/images`, async (err, files) => {
-        let ar = files.filter(f => f.split(".").pop() === "jpeg");
-        let pito = ar.length + 1
-        let file = `${__dirname}/images/how-(${pito}).jpeg`
+        let file = `${__dirname}/images/blissgay.jpeg`
     
     if (imageurl === undefined) {
         throw (
@@ -62,5 +59,5 @@ module.exports = async function (imageurl) {
     }).catch(err => console.error(`Error: ${err.message}`))
     let f = await file
     return f
-})
+
 }

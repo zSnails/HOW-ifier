@@ -54,7 +54,10 @@ module.exports = async function (imageurl) {
                 .quality(10)
 
                 await image.write(file)
-                return file            
         })
     }).catch(err => console.error(`Error: ${err.message}`))
+    setTimeout(function() {
+        return file
+        // this is to avoid any errors
+    }, 1000 * 10)
 }

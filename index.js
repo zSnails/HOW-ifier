@@ -56,8 +56,8 @@ module.exports = async function (imageurl) {
                 await image.write(file)
         })
     }).catch(err => console.error(`Error: ${err.message}`))
+    let f = await file
     setTimeout(function() {
-        return file
-        // this is to avoid any errors
+    return f
     }, 1000 * 10)
 }

@@ -3,7 +3,7 @@ let fs = require('fs');
 
 module.exports = async function (imageurl) {
     fs.readdir(`${__dirname}/images`, async (err, files) => {
-        let file = `${__dirname}/images/how-(${files.length}).jpeg`
+        let file = `${__dirname}/images/how-(${files.length + 1}).jpeg`
     
     if (imageurl === undefined) {
         throw (

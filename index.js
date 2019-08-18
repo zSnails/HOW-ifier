@@ -1,19 +1,17 @@
 #!/usr/bin/env node
-const logger = require('./util/logger.js');
+const Logger = require('./util/logger.js');
+const logger = new Logger();
 const jimp = require('jimp');
 let filepath;
 const chalk = require('chalk');
 const fs = require('fs');
 const argv = process.argv.slice(2)
-let conf = require(`${__dirname}/config.json`);
-
 let temp = `Usage:
     how <Url|Image path>
     
 Flags:
     -v | --version
     `
-
 
 if (!argv[0]) {
     logger.error('Wrong usage')

@@ -1,23 +1,16 @@
-function Logger() {
-
-}
-
-Logger.prototype.logs = function(prefix, message) {
-    console.log(`[${new Date().toLocaleDateString()}]:[${prefix}]: ${message}`);
-}
-
-Logger.info = function(message) {
-    Logger.prototype.logs("INFO", message)
-}
-
-
-Logger.error = function(message) {
-    Logger.prototype.logs("ERROR", message)
-}
-
-
-Logger.warn = function(message) {
-    Logger.prototype.logs("WARNING", message)
+class Logger {
+    constructor() {
+        this.logs = function(prefix, message) { console.log(`[${new Date().toLocaleDateString()}]:[${prefix}]: ${message}`)}
+    }
+    info(message) {
+        this.logs("INFO", message)
+    }
+    warn(message) {
+        this.logs("WARNING", message)
+    }
+    error(message) {
+        this.logs("ERROR", message)
+    }
 }
 
 module.exports = Logger

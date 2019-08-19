@@ -11,8 +11,7 @@ let temp = `Usage:
     
 Flags:
     -v | --version
-    `
-
+    -h | --help`
 if (!argv[0]) {
     logger.error('Wrong usage')
     console.log(temp)
@@ -21,6 +20,10 @@ if (!argv[0]) {
 if (argv[0] === '--version' || argv[0] === '-v') {
     const ver = require(`${__dirname}/package.json`);
     logger.info(ver.version)
+    process.exit()
+} 
+if (argv[0] === '--help' || argv[0] === '-h') {
+    console.log(temp)
     process.exit()
 } else {
     fs.readdir(`${process.cwd()}`, (err, files) => {

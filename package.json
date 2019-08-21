@@ -1,6 +1,6 @@
 {
   "name": "howifiercore",
-  "version": "1.6.7",
+  "version": "1.6.8",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.2",
+    "clipboardy": "^2.1.0",
+    "imgur": "^0.3.1",
     "jimp": "^0.6.4"
   }
 }

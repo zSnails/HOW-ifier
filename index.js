@@ -6,6 +6,8 @@ let filepath;
 const chalk = require('chalk');
 const fs = require('fs');
 const argv = process.argv.slice(2)
+const imgur = require('imgur');
+const clp = require('clipboardy');
 let temp = `Usage:
     how <Url|Image path>
     
@@ -87,11 +89,14 @@ if (argv[0] === '--help' || argv[0] === '-h') {
                     .quality(10)
                     .write(file);
                 logger.info(chalk.green('Finished writing image'));
-                logger.info(`Width: ${image.bitmap.width}`)
-                logger.info(`Height: ${image.bitmap.height}`)
                 console.timeEnd(`[${new Date().toLocaleDateString()}]:[INFO]`)
+                logger.info('Uploading file to imgur...')
+                imgur.uploadFile(file).then(file => {
+                    logger.info("File uploaded, url (already copied to clipboard): " + file.data.link)
+                    clp.writeSync(file.data.link)
+                });
             })
-        })//.catch(err => console.error(chalk.red(`Error: ${err.message}`)))
+        }).catch(err => null)
 
 
     })

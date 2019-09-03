@@ -31,7 +31,6 @@ if (argv[0] === '--help' || argv[0] === '-h') {
     fs.readdir(`${process.cwd()}`, (err, files) => {
         let ar = files.filter(f => f.split(".").pop() === "jpeg");
         let pito = ar.length + 1
-
         var file = `${process.cwd()}/how-(${pito}).jpeg`
         filepath = argv[0];
         console.time(`[${new Date().toLocaleDateString()}]:[INFO]`);
@@ -42,8 +41,6 @@ if (argv[0] === '--help' || argv[0] === '-h') {
             logger.info(chalk.yellow('Writing image (this may take a while)'))
             let w;
             let h;
-
-
             if (image.bitmap.width && image.bitmap.height < 500) {
                 w = image.bitmap.width - 100;
                 h = image.bitmap.height - 100;
@@ -61,17 +58,12 @@ if (argv[0] === '--help' || argv[0] === '-h') {
             } catch (err) {
                 return logger.error(err)
             }
-
-            let wea = image.bitmap.width / 2.8
-
             let fSize;
-            let ver;
             if (image.bitmap.width < 270) {
                 fSize = `${__dirname}/impact/impact_32.fnt`
                 ver = -20
             } else {
                 fSize = `${__dirname}/impact/impact.fnt`
-                ver = -70
             }
             jimp.loadFont(fSize).then(font => {
 
@@ -89,7 +81,6 @@ if (argv[0] === '--help' || argv[0] === '-h') {
 		    },
 		    image.bitmap.width,
 		    image.bitmap.height
-                    
                 )
                     .posterize(100)
                     .quality(10)
@@ -103,8 +94,5 @@ if (argv[0] === '--help' || argv[0] === '-h') {
                 });
             })
         }).catch(err => null)
-
-
     })
-
 }

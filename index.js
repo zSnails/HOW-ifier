@@ -23,7 +23,7 @@ if (argv[0] === '--version' || argv[0] === '-v') {
     const ver = require(`${__dirname}/package.json`);
     logger.info(ver.version)
     process.exit()
-} 
+}
 if (argv[0] === '--help' || argv[0] === '-h') {
     console.log(temp)
     process.exit()
@@ -36,7 +36,7 @@ if (argv[0] === '--help' || argv[0] === '-h') {
         filepath = argv[0];
         console.time(`[${new Date().toLocaleDateString()}]:[INFO]`);
         jimp.read(filepath).then(image => {
-            if (image.bitmap.width && image.bitmap.height < 60) {
+            if (image.bitmap.width < 60 && image.bitmap.height < 60) {
                 return logger.error(chalk.red("That image is too small"))
             }
             logger.info(chalk.yellow('Writing image (this may take a while)'))
@@ -80,10 +80,16 @@ if (argv[0] === '--help' || argv[0] === '-h') {
                     { apply: 'xor', params: [40] }
                 ]).print(
                     font,
-                    wea,
-                    ver,
-                    "HOW",
-                    50
+                    0,
+                    0,
+		    {
+			text: "HOW",
+			alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
+			alignmentY: jimp.VERTICAL_ALIGN_BOTTOM
+		    },
+		    image.bitmap.width,
+		    image.bitmap.height
+                    
                 )
                     .posterize(100)
                     .quality(10)

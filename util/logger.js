@@ -1,6 +1,6 @@
 class Logger {
     constructor() {
-        this.logs = function(prefix, message) { console.log(`[${new Date().toLocaleDateString()}]:[${prefix}]: ${message}`)}
+        this.logs = function (prefix, message) { console.log(`[${new Date().toLocaleDateString()}]:[${prefix}]: ${message}`) }
     }
     info(message) {
         this.logs("INFO", message)

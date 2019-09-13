@@ -15,7 +15,6 @@ Flags:
     -v | --version
     -h | --help`
 if (!argv[0]) {
-    logger.error('Wrong usage')
     console.log(temp)
     process.exit()
 }
@@ -77,7 +76,7 @@ if (argv[0] === '--help' || argv[0] === '-h') {
 		    {
 			text: "HOW",
 			alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
-			alignmentY: jimp.VERTICAL_ALIGN_BOTTOM
+			alignmentY: jimp.VERTICAL_ALIGN_TOP
 		    },
 		    image.bitmap.width,
 		    image.bitmap.height

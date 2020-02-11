@@ -9,7 +9,7 @@ module.exports = function (imageurl) {
             `the image field can't be empty`)
     }
     jimp.read(imageurl).then(image => {
-        if (image.bitmap.width && image.bitmap.height < 60) return console.log("That image is too small")
+        if (image.bitmap.width && image.bitmap.height < 60) return "That image is too small"
         let w;
         let h;
         if (image.bitmap.width && image.bitmap.height < 500) {
@@ -44,10 +44,15 @@ module.exports = function (imageurl) {
                 { apply: 'xor', params: [40] }
             ]).print(
                 font,
-                wea,
-                ver,
-                "HOW",
-                50
+                    0,
+                    0,
+		    {
+			    text: "HOW",
+			    alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
+			    alignmentY: jimp.VERTICAL_ALIGN_TOP
+		    },
+		    image.bitmap.width,
+		    image.bitmap.height
         )
                 .posterize(100)
 
@@ -56,6 +61,6 @@ module.exports = function (imageurl) {
                  image.write(file)
 
         })
-    }).catch(err => console.error(`Error: ${err.message}`))
+    }).catch(err => err)
     return file
 }
